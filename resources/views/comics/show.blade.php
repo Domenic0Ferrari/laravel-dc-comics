@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('contents')
-<div class="container mt-5 mb-5">
+<div class="container">
     <h1 class="text-center">{{ $comic->title }}</h1>
     <h2 class="text-center">{{ $comic->type }}</h2>
     <p>{{ $comic->description }}</p>
