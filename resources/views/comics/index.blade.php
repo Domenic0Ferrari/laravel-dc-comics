@@ -4,7 +4,9 @@
     <div class="container">
         <h1 class="text-center">I nostri fumetti!</h1>
 
-        <div class="row">
+        <a href="{{ route('comics.create') }}" class="btn btn-primary mb-3">New</a>
+
+        <div class="row mb-3">
             @foreach ($comics as $comic)
             <div class="col-4">
                 <div class="card">
