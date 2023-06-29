@@ -8,11 +8,13 @@
             @foreach ($comics as $comic)
             <div class="col-4">
                 <div class="card">
-                    <img src="{{ $comic->thumb }}" class="card-img-top" alt="{{ $comic->title }}">
+                    <img src="{{ $comic->thumb }}" class="mx-auto d-block" alt="{{ $comic->title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $comic->title }}</h5>
                         <p class="card-text">{{ $comic->type }}</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="{{ route('comics.show', ['comic' => $comic->id]) }}" class="btn btn-primary">View</a>
+                        <a href="" class="btn btn-warning">Edit</a>
+                        <a href="" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
             </div>

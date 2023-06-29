@@ -1,3 +1,3 @@
 <header>
-    <h2>Sono l'header</h2>
+    <h2 class="text-center">Sono l'header</h2>
 </header>
