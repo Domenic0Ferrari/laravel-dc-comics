@@ -15,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'home'])->name('home');
+
+Route::resource('comics', ComicController::class);
+// questo lega ciascuna rotta in maniera corretta
