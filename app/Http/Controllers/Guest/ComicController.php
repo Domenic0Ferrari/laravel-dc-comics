@@ -43,9 +43,9 @@ class ComicController extends Controller
             'title' => 'required|string|max:100',
             'description' => 'required|string',
             'thumb' => 'string|max:350',
-            'price' => 'integer|min:1|max:250',
+            'price' => 'required|decimal:2|min:1|max:250',
             'series' => 'required|string|max:100',
-            'date' => 'required|date',
+            'sale_date' => 'required|date',
             'type' => 'required|string|max:100',
         ]);
 
@@ -59,7 +59,7 @@ class ComicController extends Controller
         $newComic->thumb = $data['thumb'];
         $newComic->price = $data['price'];
         $newComic->series = $data['series'];
-        $newComic->date = $data['date'];
+        $newComic->sale_date = $data['sale_date'];
         $newComic->type = $data['type'];
         $newComic->save();
 

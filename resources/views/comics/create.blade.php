@@ -4,6 +4,16 @@
 <h2 class="text-center">Inserisci un nuovo fumetto</h2>
 <div class="container">
 
+    {{-- @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif --}}
+
     <form method="POST" action="{{ route('comics.store') }}">
         @csrf {{-- è necessario per motivi di sicurezza, genera il token --}}
         <div class="mb-3">
@@ -35,7 +45,7 @@
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{old('price')}}">
+            <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{old('price')}}">
             <div class="invalid-feedback">
                 @error('price')
                 {{ $message }}
@@ -70,7 +80,7 @@
             </div>
         </div>
     
-        <button class="btn btn-primary">Salva</button>
+        <button class="btn btn-primary">Save</button>
     </form>
 </div>
 
