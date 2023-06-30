@@ -5,15 +5,15 @@
 <div class="container">
 
     <form method="POST" action="{{ route('comics.store') }}">
+        @csrf {{-- è necessario per motivi di sicurezza, genera il token --}}
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title">
+            <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <input type="text" class="form-control" id="description">
         </div>
-        {{-- da vedere come inserire l'img --}}
         <div class="mb-3">
             <label for="thumb" class="form-label">Thumb</label>
             <input type="text" class="form-control" id="thumb">
@@ -35,7 +35,7 @@
             <input type="text" class="form-control" id="type">
         </div>
     
-        <button type="button" class="btn btn-primary">Salva</button>
+        <button class="btn btn-primary">Salva</button>
     </form>
 </div>
 

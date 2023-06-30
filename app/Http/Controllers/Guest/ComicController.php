@@ -26,6 +26,7 @@ class ComicController extends Controller
      */
     public function create()
     {
+        // dove si trova il form
         return view('comics.create');
     }
 
