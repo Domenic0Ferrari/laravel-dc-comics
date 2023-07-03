@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 
+Route::post('/comics/trashed', [ComicController::class, 'trashed'])->name('comics.trashed');
+
 Route::resource('comics', ComicController::class);
 // questo lega ciascuna rotta in maniera corretta
 

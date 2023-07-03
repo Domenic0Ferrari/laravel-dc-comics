@@ -142,4 +142,10 @@ class ComicController extends Controller
         $comic = Comic::find($id);
         return to_route('comics.index')->with('restore_success', $comic);
     }
+
+    public function trashed()
+    {
+        $trashedComics = Comic::withTrashed()->paginate(2);
+        return view('comics.trashed', compact('trashedComics'));
+    }
 }
