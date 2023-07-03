@@ -4,10 +4,23 @@
     <div class="container">
         <h1 class="text-center">I nostri fumetti!</h1>
         @if (session('delete_success'))
+        @php $comic = (session('delete_success')) @endphp
         <div class="alert alert-danger">
-            {{ session('delete_success') }}
+            Il fumetto "{{ $comic->title }}" è stato eliminato
+            <form action="{{ route('comics.restore', ['comic' => $comic]) }}" method="POST">
+            @csrf
+            <button class="btn btn-warning">Restore</button>
+            </form>
+        </div>
+        @endif 
+
+        @if (session('restore_success'))
+        @php $comic = (session('restore_success')) @endphp
+        <div class="alert alert-success">
+            Il fumetto "{{ $comic->title }}" è stato ripristinato
         </div>
         @endif
+
         <div class="row mb-3">
             @foreach ($comics as $comic)
             <div class="col-4">

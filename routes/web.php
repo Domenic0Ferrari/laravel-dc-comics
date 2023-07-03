@@ -20,3 +20,5 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 
 Route::resource('comics', ComicController::class);
 // questo lega ciascuna rotta in maniera corretta
+
+Route::post('/comics/{comic}/restore', [ComicController::class, 'restore'])->name('comics.restore');
