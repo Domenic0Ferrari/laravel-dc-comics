@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
+
+    private $validations = [
+        'title' => 'string|max:100',
+        'description' => 'required|string',
+        'thumb' => 'string|max:350',
+        'price' => 'required|decimal:2|min:1|max:250',
+        'series' => 'required|string|max:100',
+        'sale_date' => 'required|date',
+        'type' => 'required|string|max:100',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -39,15 +50,7 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         // validare i dati
-        $request->validate([
-            'title' => 'required|string|max:100',
-            'description' => 'required|string',
-            'thumb' => 'string|max:350',
-            'price' => 'required|decimal:2|min:1|max:250',
-            'series' => 'required|string|max:100',
-            'sale_date' => 'required|date',
-            'type' => 'required|string|max:100',
-        ]);
+        $request->validate($this->validations);
 
         // richiediamo i dati con ->all
         $data = $request->all();
@@ -86,7 +89,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -96,9 +99,28 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        // validare i dati
+        $request->validate($this->validations);
+
+        // prendo i dati dal form mettendoli in un array associativo
+        $data = $request->all();
+
+        // aggiornare i dati nel databes
+        $comic->title = $data['title'];
+        $comic->description = $data['description'];
+        $comic->thumb = $data['thumb'];
+        $comic->price = $data['price'];
+        $comic->series = $data['series'];
+        $comic->sale_date = $data['sale_date'];
+        $comic->type = $data['type'];
+        // metodo per aggiornare i dati
+        $comic->update();
+
+        // ritornare con redirect la show, per vedere la pagina aggiornata
+        // un altro modo per scrivere il redirect
+        return to_route('comics.show', ['comic' => $comic->id]);
     }
 
     /**
