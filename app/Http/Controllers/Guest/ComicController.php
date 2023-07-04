@@ -148,4 +148,12 @@ class ComicController extends Controller
         $trashedComics = Comic::onlyTrashed()->paginate(3);
         return view('comics.trashed', compact('trashedComics'));
     }
+
+    public function harddelete($id)
+    {
+        $comic = Comic::withTrashed()->find($id);
+        $comic->forceDelete();
+
+        return to_route('comics.trashed')->with('delete_success', $comic);
+    }
 }
