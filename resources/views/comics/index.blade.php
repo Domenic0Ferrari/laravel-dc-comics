@@ -46,5 +46,6 @@
         </div>
         {{ $comics->links() }}
         <a href="{{ route('comics.create') }}" class="btn btn-primary mb-3">New</a>
+        <a href="{{ route('comics.trashed') }}" class="btn btn-primary mb-3">Bucket</a>
     </div>
 @endsection

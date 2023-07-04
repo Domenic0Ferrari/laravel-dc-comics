@@ -79,6 +79,6 @@
             @endforeach
         </div>
         {{ $trashedComics->links() }}
-        <a href="{{ route('comics.create') }}" class="btn btn-primary mb-3">New</a>
+        {{-- <a href="{{ route('comics.create') }}" class="btn btn-primary mb-3">New</a> --}}
     </div>
 @endsection
